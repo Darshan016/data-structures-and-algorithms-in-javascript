@@ -87,7 +87,58 @@ class LinkedList{
             return removednode.value
         }
     }
+    removeValue(value){
+        if(this.isEmpty()){
+            return null
+        }
+        if(this.head.value===value){
+            this.head=this.head.next
+            this.size--
+            return value
+        }else{
+            let prev=this.head
+            while(prev.next && prev.next.value!==value){
+                prev=prev.next
+            }if(prev.next){
+                const removednode=prev.next
+                prev.next=removednode.next
+                this.size--
+                return value
+            }
+            return null
+        }
+        
+
+        
+    }
+    search(value){
+        if(this.isEmpty()){
+            return -1;
+        }
+        let i=0;
+        let cur=this.head;
+        while(cur){
+            if(cur.value===value){
+                return i;
+            }
+            cur=cur.next;
+            i++
+        }
+        return -1
+    }
+    reverse(){
+        let prev=null
+        let curr=this.head;
+        while(curr){
+            let next=curr.next;
+            curr.next=prev;
+            prev=curr
+            curr=next;
+        }
+        this.head=prev
+    }
 }
+
 const list=new LinkedList()
 console.log(list.isEmpty())
 console.log(list.getSize())
@@ -97,5 +148,9 @@ list.addFirst(60)
 list.addEnd(10)
 list.insert(5,2)
 list.print()
-console.log(list.removeFrom(1))
+// console.log(list.removeFrom(1))
+// console.log(list.removeValue(10))
+// console.log(list.search(5))
+// list.print()
+list.reverse()
 list.print()
