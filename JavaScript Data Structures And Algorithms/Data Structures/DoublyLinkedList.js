@@ -197,25 +197,46 @@ class DoublyLinkedList {
   }
 }
 
+// function to check if two linkedlists are similar or Notification(boolean function)
+const similar=function(list1,list2){
+  if(list1.head===null && list2.head===null){
+    return true
+  }
+  let cur1=list1.head
+  let cur2=list2.head
+  while(cur1!==null && cur2!==null){
+    if(cur1.value!==cur2.value){
+      return false
+    }
+    if(cur1.next===null && cur2.next===null){
+      return true
+    }
+    cur1=cur1.next
+    cur2=cur2.next
+  }
+  return false
+}
+
+
 const list = new DoublyLinkedList();
-list.prepend(5);
-list.prepend(10);
+list.prepend(0);
+list.prepend(12);
 list.append(4);
 list.prepend(11);
 list.append(23);
 const list2 = new DoublyLinkedList();
-list2.prepend(5);
-list2.prepend(10);
+list2.prepend(0);
+list2.prepend(12);
 list2.append(4);
 list2.prepend(11);
 list2.append(23);
-
 // list.print()
 // console.log(list.removeFromFront())
 // list.print()
 // list.removeFromEnd()
 list.print();
 list2.print();
+console.log(similar(list,list2))
 // list.deleteAlternate()
 // list.print()
 // console.log(list.searchByIndex(2))
